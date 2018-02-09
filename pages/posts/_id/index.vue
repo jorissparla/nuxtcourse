@@ -1,12 +1,12 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1>Title</h1>
+      <h1>{{loadedPost.title}}</h1>
       <div class="post-details">
-        <div>Last updated on XXX</div>
-        <div>Written by NAME</div>
+        <div>Last updated on {{loadedPost.updatedDate}}</div>
+        <div>Written by {{loadedPost.author}}</div>
       </div>
-      <p>Content of the post</p>
+      <p>{{loadedPost.content}}</p>
     </section>
     <section class="post-feedback">
       <p>
@@ -17,7 +17,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: {
+          id: '1',
+          title: 'first Post (ID: ' + context.params.id + ')',
+          previewText: 'This is our first Post',
+          author: 'Joris Sparla',
+          updatedDate: new Date(),
+          content: 'Some dummy text which is not rhe previewText',
+          thumbnail: 'http://www.biznespreneur.com/wp-content/uploads/2017/06/t.jpg'
+        }
+      });
+    }, 1000);
+  }
+};
 </script>
 
 <style scoped>

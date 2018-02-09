@@ -9,19 +9,10 @@
 import PostList from '@/components/Posts/PostList.vue';
 
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPosts: [
-          {
-            id: '1',
-            title: 'first Post',
-            previewText: 'This is our first Post',
-            thumbnail: 'http://www.biznespreneur.com/wp-content/uploads/2017/06/t.jpg'
-          }
-        ]
-      });
-    }, 2000);
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts;
+    }
   },
 
   components: {
