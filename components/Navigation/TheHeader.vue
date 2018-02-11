@@ -8,6 +8,9 @@
     <div class="spacer"></div>
     <div class="navigation-items">
       <ul class="nav-list">
+        <li class="nav-item">Logged: </li>
+     
+        <li class="nav-item"><nuxt-link to="/posts">{{user}}</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/posts">Blog</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/admin">Admin</nuxt-link></li>
@@ -24,6 +27,11 @@ export default {
   name: "TheHeader",
   components: {
     TheSideNavToggle
+  },
+  computed: {
+    user() {
+      return this.$store.getters.loggedOnUser;
+    }
   }
 };
 </script>

@@ -43,6 +43,9 @@ module.exports = {
     credentials: false
   },
 
+  env: {
+    fbAPIKey: "AIzaSyBFvtXCxzFaEPQbalpUyXtiQo2bM5Xw2bo"
+  },
   /*
   ** Build configuration
   */
