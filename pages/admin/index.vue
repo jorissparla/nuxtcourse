@@ -5,19 +5,18 @@
     </section>
     <section class="existing-posts">
       <h1>Existing Posts</h1>
-      <PostList isAdmin></PostList>
+      <PostList isAdmin :posts="loadedPosts"></PostList>
     </section>
   </div>
 </template>
 
 <script>
-import AppButton from '@/components/UI/AppButton';
-import PostList from '@/components/Posts/PostList';
 export default {
-  layout: 'admin',
-  components: {
-    PostList,
-    AppButton
+  computed: {
+    loadedPosts() {
+      console.log("computed");
+      return this.$store.getters.loadedPosts;
+    }
   }
 };
 </script>

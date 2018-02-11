@@ -2,10 +2,8 @@
   <div class="single-post-page">
     <section class="post">
       <h1>{{loadedPost.title}}</h1>
-      <div class="post-details">
-        <div>Last updated on {{loadedPost.updatedDate}}</div>
-        <div>Written by {{loadedPost.author}}</div>
-      </div>
+        <div class="post-details">Last updated on {{loadedPost.updatedDate | date}}</div>
+        <div class="post-details">Written by {{loadedPost.author}}</div>
       <p>{{loadedPost.content}}</p>
     </section>
     <section class="post-feedback">
@@ -18,20 +16,15 @@
 
 <script>
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPost: {
-          id: '1',
-          title: 'first Post (ID: ' + context.params.id + ')',
-          previewText: 'This is our first Post',
-          author: 'Joris Sparla',
-          updatedDate: new Date(),
-          content: 'Some dummy text which is not rhe previewText',
-          thumbnail: 'http://www.biznespreneur.com/wp-content/uploads/2017/06/t.jpg'
-        }
-      });
-    }, 1000);
+  asyncData(context) {
+    return this.$axios
+      .$get("posts/" + context.params.id + ".json")
+      .then(res => {
+        return {
+          loadedPost: res.data
+        };
+      })
+      .catch(e => context.error(e));
   }
 };
 </script>

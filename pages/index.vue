@@ -14,40 +14,11 @@
 </template>
 
 <script>
-import PostList from '~/components/Posts/PostList.vue';
-
 export default {
-  components: {
-    PostList
-  },
-  asyncData(context, callback) {
-    console.log('Async Data is executed');
-    setTimeout(() => {
-      callback(null, {
-        loadedPosts: [
-          {
-            id: '1',
-            title: 'first Post',
-            previewText: 'This is our first Post',
-            thumbnail: 'http://www.biznespreneur.com/wp-content/uploads/2017/06/t.jpg'
-          },
-          {
-            id: '2',
-            title: 'Second Post',
-            previewText: 'This is our first Post',
-            thumbnail:
-              'https://media-exp2.licdn.com/mpr/mpr/AAIABADGAAoAAQAAAAAAAA0AAAAAJDU5Y2Q1Mjk1LTAxOWUtNDY3My1hMDg1LTBmMmZkYjVkOTEzOQ.jpg'
-          },
-          {
-            id: '3',
-            title: 'first Post',
-            previewText: 'This is our first Post',
-            thumbnail:
-              'https://thetechportal.com/wp-content/uploads/2017/07/wire-rack-1311161_960_720-300x168.jpg'
-          }
-        ]
-      });
-    }, 1500);
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts;
+    }
   },
   created() {}
   /*   data() {
@@ -64,7 +35,7 @@ export default {
   position: relative;
   padding: 30px;
   box-sizing: border-box;
-  background-image: url('~/assets/main-page-background.jpg');
+  background-image: url("~/assets/main-page-background.jpg");
   background-position: center;
   background-size: cover;
 }

@@ -1,17 +1,23 @@
 <template>
   <div class="admin-new-post-page">
     <section class="new-post-form">
-      <AdminPostForm></AdminPostForm>
+      <AdminPostForm @submit="onSubmitted"></AdminPostForm>
     </section>
   </div>
 </template>
 
 <script>
-import AdminPostForm from '@/components/Admin/AdminPostForm';
+import AdminPostForm from "@/components/Admin/AdminPostForm";
 export default {
-  layout: 'admin',
+  layout: "admin",
   components: {
     AdminPostForm
+  },
+  methods: {
+    onSubmitted(postData) {
+      console.log("onSubmitted");
+      this.$store.dispatch("addPost", postData).then(() => this.$router.push("/admin"));
+    }
   }
 };
 </script>
