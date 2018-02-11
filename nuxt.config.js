@@ -39,7 +39,8 @@ module.exports = {
   */
   modules: ["@nuxtjs/axios"],
   axios: {
-    baseURL: "https://nuxt-blog-cac9b.firebaseio.com"
+    baseURL: "https://nuxt-blog-cac9b.firebaseio.com",
+    credentials: false
   },
 
   /*

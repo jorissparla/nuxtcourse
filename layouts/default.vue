@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import Header from '../components/Header.vue';
-import TheHeader from '@/components/Navigation/TheHeader';
-import TheSidenav from '@/components/Navigation/TheSidenav';
+import Header from "../components/Header.vue";
+import TheHeader from "@/components/Navigation/TheHeader";
+import TheSidenav from "@/components/Navigation/TheSidenav";
 
 export default {
   components: {
@@ -25,7 +25,7 @@ export default {
 </script>
 <style>
 html {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
 }
 body {
   margin: 0;

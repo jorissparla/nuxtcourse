@@ -13,9 +13,8 @@ export default {
     AdminPostForm
   },
   asyncData(context) {
-    console.log("context", context.params);
-    return this.$axios
-      .$get("/posts/" + context.params.postId + ".json")
+    return context.app.$axios
+      .get("/posts/" + context.params.postId + ".json")
       .then(res => {
         return {
           loadedPost: { ...res.data, id: context.params.postId }

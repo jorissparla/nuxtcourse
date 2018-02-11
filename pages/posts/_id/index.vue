@@ -17,8 +17,8 @@
 <script>
 export default {
   asyncData(context) {
-    return this.$axios
-      .$get("posts/" + context.params.id + ".json")
+    return context.app.$axios
+      .get("posts/" + context.params.id + ".json")
       .then(res => {
         return {
           loadedPost: res.data

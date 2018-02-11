@@ -14,7 +14,6 @@
 export default {
   computed: {
     loadedPosts() {
-      console.log("computed");
       return this.$store.getters.loadedPosts;
     }
   }
